@@ -1,51 +1,22 @@
 import { useState } from 'react';
 import Table from './components/Table';
+import MyForm from './components/MyForm';
 
 const App = () => {
-    const [state, setState] = useState({ numberList: [0] });
+    const [state, setState] = useState([1, 2]);
+    const [state2, setState2] = useState([3, 4]);
     const onClick = () => {
-        // not ok
-        // state.numberList.push(1);
-        // setState(state);
-
-        // ok
-        const { numberList } = state;
-        numberList.push(1);
-        setState({ numberList });
+        setState2([]);
+        state.push(5);
     }
     return (
         <>
-            <h1>length = {state.numberList.length}</h1>
+            <h1>length = {state.length}</h1>
             <button onClick={onClick}>Set State</button>
             <Table />
+            <MyForm />
         </>
     )
 }
-
-/*class App extends Component {
-
-    constructor(props) {
-        super(props);
-        this.state = {
-            numberList: []
-        };
-    }
-
-    onClick() {
-        const { numberList } = this.state;
-        numberList.push(1);
-        this.setState({ numberList });
-    }
-
-    render() {
-        const { numberList } = this.state;
-        return (
-            <>
-                <h1>length = {numberList.length}</h1>
-                <button onClick={() => this.onClick()}>Set State</button>
-            </>
-        )
-    }
-}*/
 
 export default App;
